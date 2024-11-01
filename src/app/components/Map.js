@@ -1,32 +1,74 @@
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function Map() {
-  // Only using useRef to keep a reference to the map if needed in the future
   const mapRef = useRef(null);
+  const [birdData, setBirdData] = useState([]);
+
+  useEffect(() => {
+    fetch('/data.txt') // Actualiza con la ruta correcta
+      .then(response => response.text())
+      .then(text => {
+        const lines = text.split('\n');
+        const header = lines[0].split('\t');
+        const data = lines.slice(1).map(line => {
+          const values = line.split('\t');
+          return header.reduce((obj, key, index) => {
+            obj[key] = values[index];
+            return obj;
+          }, {});
+        });
+        setBirdData(data);
+      })
+      .catch(error => console.error('Error loading data:', error));
+  }, []);
+
+  const speciesGroups = {};
+  birdData.forEach(entry => {
+    const decimalLatitude = parseFloat(entry.decimalLatitude);
+    const decimalLongitude = parseFloat(entry.decimalLongitude);
+    const scientificName = entry.scientificName;
+
+    if (!isNaN(decimalLatitude) && !isNaN(decimalLongitude)) {
+      const latLngKey = `${decimalLatitude},${decimalLongitude}`;
+
+      if (!speciesGroups[latLngKey]) {
+        speciesGroups[latLngKey] = [];
+      }
+      speciesGroups[latLngKey].push(scientificName);
+    }
+  });
 
   return (
     <MapContainer
       ref={mapRef}
-      center={[51.505, -0.09]}
+      center={[-0.05, -75.21679]} 
       zoom={13}
       style={{ height: '100vh' }}
-      whenCreated={(mapInstance) => {
-        // Store map instance reference in case we want to manipulate it later
+      whenCreated={mapInstance => {
         mapRef.current = mapInstance;
       }}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[51.505, -0.09]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
+      {Object.entries(speciesGroups).map(([latLng, species], index) => {
+        const [lat, lng] = latLng.split(',').map(Number);
+        return (
+          <Marker key={index} position={[lat, lng]} >
+            <Popup>
+              <h3>Especies avistadas:</h3>
+              <ul>
+                {species.map((name, i) => (
+                  <li key={i}>{name}</li>
+                ))}
+              </ul>
+            </Popup>
+          </Marker>
+        );
+      })}
     </MapContainer>
-
   );
 }
 
