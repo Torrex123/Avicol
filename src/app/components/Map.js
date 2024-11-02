@@ -1,4 +1,6 @@
 import 'leaflet/dist/leaflet.css';
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; 
+import 'leaflet-defaulticon-compatibility';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useEffect, useRef, useState } from 'react';
 
@@ -7,7 +9,7 @@ function Map() {
   const [birdData, setBirdData] = useState([]);
 
   useEffect(() => {
-    fetch('/data.txt') 
+    fetch('/data.txt')
       .then(response => response.text())
       .then(text => {
         const lines = text.split('\n');
@@ -44,7 +46,7 @@ function Map() {
     <MapContainer
       ref={mapRef}
       center={[4.5709, -74.2973]}
-      zoom={5} 
+      zoom={5}
       style={{ height: '100vh' }}
       whenCreated={mapInstance => {
         mapRef.current = mapInstance;
@@ -56,7 +58,7 @@ function Map() {
       {Object.entries(speciesGroups).map(([latLng, species], index) => {
         const [lat, lng] = latLng.split(',').map(Number);
         return (
-          <Marker key={index} position={[lat, lng]} >
+          <Marker key={index} position={[lat, lng]}>
             <Popup>
               <h3>Especies avistadas:</h3>
               <ul>
