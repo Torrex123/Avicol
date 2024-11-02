@@ -7,7 +7,7 @@ function Map() {
   const [birdData, setBirdData] = useState([]);
 
   useEffect(() => {
-    fetch('/data.txt') // Actualiza con la ruta correcta
+    fetch('/data.txt') 
       .then(response => response.text())
       .then(text => {
         const lines = text.split('\n');
@@ -43,15 +43,15 @@ function Map() {
   return (
     <MapContainer
       ref={mapRef}
-      center={[-0.05, -75.21679]} 
-      zoom={13}
+      center={[4.5709, -74.2973]}
+      zoom={5} 
       style={{ height: '100vh' }}
       whenCreated={mapInstance => {
         mapRef.current = mapInstance;
       }}
     >
       <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png"
       />
       {Object.entries(speciesGroups).map(([latLng, species], index) => {
         const [lat, lng] = latLng.split(',').map(Number);
