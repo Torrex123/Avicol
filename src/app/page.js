@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div>
       <div className={styles.container} style={{
-        backgroundImage: " linear-gradient(rgba(9,0,77, 0.65), rgba(9,0,77,0.65)), url('/vividly-colored-hummingbird-nature.jpg')"
+        backgroundImage: "url('/banner.jpg')",
       }}>
         <nav className={styles.navigation}>
           <img src="/Avicol.png" alt="logo" style={{width: '240px', cursor: 'pointer'}}/>
@@ -24,7 +24,7 @@ export default function Home() {
             <li className={styles.navItem}><a href="/about">About</a></li>
             <li className={styles.navItem}><a href="/birds">Birds</a></li>
             <li className={styles.navItem}><a href="/contact">Contact</a></li>
-            <button className={styles.navButton}>Insights</button>
+            <li className={styles.navItem}><a href="/contact">Insights</a></li>
           </ul>
         </nav>
 
@@ -47,7 +47,7 @@ export default function Home() {
           Click on the points on the map for more information!
         </p>
         <div className={styles.mapContainer}>
-          {MemoizedMap}
+          
         </div>
       </div>
     </div>

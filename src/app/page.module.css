@@ -4,10 +4,10 @@
   background-image: linear-gradient(
       rgba(var(--gray-rgb), 0.05),
       rgba(var(--gray-rgb), 0.05)
-    ); 
+    ), url('/bird.jpg'); 
   background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
+  background-size: cover; 
+  background-position: top center; /* Or try center center, bottom center, etc. */
   padding: 10px 8%;
 }
 
@@ -38,21 +38,6 @@
   color: #f2f2f2
 }
 
-.navButton {
-  outline: 0;
-  border-radius: 5px;
-  padding: 1px 10px;
-  font-weight: 600;
-  font-size: medium;
-  box-shadow: 0px 0px 10px #c91073;
-  border:2px solid #bd0065;
-  background-color: #c91073;
-  color: #ffffff;
-  text-transform: uppercase; 
-  transition: background-color 0.3s ease, transform 0.2s ease; 
-  cursor: pointer; 
-}
-
 .content {
   color: #ffffff;
   margin-top: 14%;
@@ -70,9 +55,9 @@
 }
 
 .birds {
-  color: #f01a8c; 
+  color: #57f01a; 
   text-transform: uppercase;
-  text-shadow: 1px 1px 10px #6e003b;
+  text-shadow: 1px 1px 10px #006e09;
 }
 
 .colombia {
@@ -99,10 +84,10 @@
   padding: 10px 20px;
   font-weight: 600;
   font-size: large;
-  box-shadow: 0px 0px 10px #c91073;
-  border:2px solid #bd0065;
+  box-shadow: 0px 0px 10px #c9c610;
+  border:2px solid #c58700;
   width: 100%;
-  background-color: #c91073;
+  background-color: #c48600;
   color: #ffffff;
   text-transform: uppercase; 
   transition: background-color 0.3s ease, transform 0.2s ease; 
@@ -111,7 +96,7 @@
 }
 
 .button:hover {
-  background-color: #a80e5f; 
+  background-color: #a8580e; 
   transform: translateY(-2px); 
 }
 
