@@ -1,6 +1,7 @@
 // page.js
 import styles from "./../page.module.css";
 import styles2 from "./page.module.css";
+import Image from 'next/image';
 
 export default function Dashboard() {
 
@@ -8,9 +9,9 @@ export default function Dashboard() {
     <div className={styles2.container}>
       {/* Navigation Bar */}
       <nav className={styles.navigation}>
-        <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
+        <Image src="/Avicol.png" alt="logo" width={240} height={240} style={{ cursor: 'pointer' }} />
         <ul className={styles.navList}>
-          <li className={styles2.navItem}><a href="/">Home</a></li>
+          <li className={styles2.navItem}><a href="">Home</a></li>
           <li className={styles2.navItem}><a href="/about">About</a></li>
           <li className={styles2.navItem}><a href="/birds">Birds</a></li>
           <li className={styles2.navItem}><a href="/contact">Contact</a></li>

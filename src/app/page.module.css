@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Signika:wght@300..700&display=swap');
+
 .container {
   width: 100%;
   min-height: 100vh;
@@ -8,7 +10,7 @@
   background-attachment: fixed;
   background-size: cover; 
   background-position: top center; /* Or try center center, bottom center, etc. */
-  padding: 10px 8%;
+  padding: 10px 7%;
 }
 
 .navigation {
@@ -40,7 +42,7 @@
 
 .content {
   color: #ffffff;
-  margin-top: 14%;
+  margin-top: 7%;
   max-width: 620px;
 }
 
@@ -50,20 +52,20 @@
   line-height: 85px;
   margin-bottom: 25px;
   color: #ffffff;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  /* text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); */
   animation: fadeInUp 1s ease-in-out;
 }
 
+
 .birds {
-  color: #57f01a; 
-  text-transform: uppercase;
-  text-shadow: 1px 1px 10px #006e09;
+  color: #87A922; 
 }
 
+
 .colombia {
-  color: #e4870f; 
-  text-transform: uppercase;
-  text-shadow: 1px 1px 10px #8b5605;
+  color: #F09319; 
+  /* text-transform: uppercase; */
+  /* text-shadow: 1px 1px 10px #8b5605; */
 }
 
 .description {
@@ -71,7 +73,15 @@
   color: #e0e0e0;
   margin-bottom: 40px;
   line-height: 1.6;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  /* text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); */
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.button_container {
+  display: flex;
+  margin-left: 12%;
+  gap: 70px;
+  margin-top: 20px;
   animation: fadeInUp 1s ease-in-out;
 }
 
@@ -82,21 +92,22 @@
   outline: 0;
   border-radius: 5px;
   padding: 10px 20px;
-  font-weight: 600;
+  font-family: "Signika", sans-serif;
+  font-weight: 100;
   font-size: large;
-  box-shadow: 0px 0px 10px #c9c610;
-  border:2px solid #c58700;
-  width: 100%;
-  background-color: #c48600;
+  border: 0;
+  width: 30%;
+  height: 50px;
+  background-color: #87A922;
   color: #ffffff;
-  text-transform: uppercase; 
+  /* text-transform: uppercase; */
   transition: background-color 0.3s ease, transform 0.2s ease; 
   cursor: pointer; 
   animation: fadeInUp 1s ease-in-out;
 }
 
 .button:hover {
-  background-color: #a8580e; 
+  background-color: #a3ca30; 
   transform: translateY(-2px); 
 }
 
@@ -110,8 +121,8 @@
   align-items: center;
   padding: 50px 20px;
   background-color: #f9fafc;
-  border-top: 6px solid #a80e5f; 
-  border-bottom: 6px solid #a80e5f; 
+  border-top: 6px solid #87A922; 
+  border-bottom: 6px solid #87A922; 
   text-align: center;
 }
 
