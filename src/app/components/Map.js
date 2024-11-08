@@ -9,22 +9,34 @@ function Map() {
   const [birdData, setBirdData] = useState([]);
 
   useEffect(() => {
-    fetch('/data.txt')
-      .then(response => response.text())
-      .then(text => {
-        const lines = text.split('\n');
-        const header = lines[0].split('\t');
-        const data = lines.slice(1).map(line => {
-          const values = line.split('\t');
-          return header.reduce((obj, key, index) => {
-            obj[key] = values[index];
-            return obj;
-          }, {});
-        });
-        setBirdData(data);
-      })
-      .catch(error => console.error('Error loading data:', error));
+    fetch('/map.txt')
+  .then(response => response.text())
+  .then(text => {
+    const lines = text.trim().split('\n');  
+    const header = lines[0].split(/\s+/);  
+
+    const data = lines.slice(1).map(line => {
+      const values = line.split(/\s+/);  
+      
+      const scientificName = values.slice(2).join(' ').replace(/^"|"$/g, '');  
+
+      return header.reduce((obj, key, index) => {
+        if (key === 'scientificName') {
+          obj[key] = scientificName;  
+        } else {
+          obj[key] = values[index];  
+        }
+        return obj;
+      }, {});
+    });
+
+    setBirdData(data);
+    console.log('Data loaded:', data);
+  })
+  .catch(error => console.error('Error loading data:', error));
+
   }, []);
+  
 
   const speciesGroups = {};
   birdData.forEach(entry => {
