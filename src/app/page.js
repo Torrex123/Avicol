@@ -49,7 +49,7 @@ export default function Home() {
           Click on the points on the map for more information!
         </p>
         <div className={styles.mapContainer}>
-
+          {MemoizedMap}
         </div>
       </div>
     </div>
