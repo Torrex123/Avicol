@@ -1,8 +1,21 @@
 .container {
     width: 100%;
-    min-height: 100vh;
     padding: 10px 8%;
+    min-height: 100vh;
     background-color: aliceblue;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px 7%;
+    background-color: #34d399; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .navItem {
@@ -13,25 +26,109 @@
 .navItem a{
     text-decoration: none;
     font-size: larger;
-    color: #000000
+    color: #ffffff
+}
+
+.insightsTitleSection {
+    text-align: center;
+    margin-bottom: 40px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
 }
 
 .title {
-    font-size: 2.5em;
-    font-weight: bold;
-    color: #374151;
+    font-family: 'Lora', serif;
+    font-size: 36px;
+    color: #2d3748; /* Dark text for contrast */
+    font-weight: 700;
+    line-height: 1.3;
     margin-bottom: 10px;
 }
 
-.description {
-    font-size: 1.2em;
-    color: #6b7280;
+.title span {
+    color: #48bb78; /* Green accent for "Insights" and "Birds" */
 }
 
 .insights {
-    color: #10b981; /* Accent color for 'Insights' */
+    font-weight: 600;
 }
 
 .birds {
-    color: #3b82f6; /* Accent color for 'Bird Populations' */
+    font-weight: 600;
+}
+
+.description {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #4a5568; /* Slightly muted color for readability */
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.plotContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap; 
+}
+
+.plotContainer h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    color: #2d3748;
+    margin-bottom: 20px;
+    font-weight: 600;
+    gap: 20px;
+    padding: 20px;
+}
+
+.plot {
+    width: 100%;
+    max-width: 550px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: auto;
+}
+
+
+.plot h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 1200px) {
+    .plot {
+        width: 100%;
+    }
+
+    .plotContainer {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 5%;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .description {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .plotContainer h2 {
+        font-size: 20px;
+    }
 }
