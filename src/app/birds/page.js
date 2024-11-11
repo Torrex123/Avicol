@@ -60,17 +60,19 @@ export default function Birds() {
   };
 
   return (
-    <div>
+    <div style={{ backgroundColor: '#f9f9f9' }}>
       {/* Navigation Bar */}
-      <nav className={styles2.navigation}>
-        <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
-        <ul className={styles.navList}>
-          <li className={styles2.navItem}><a href="/">Home</a></li>
-          <li className={styles2.navItem}><a href="/about">About</a></li>
-          <li className={styles2.navItem}><a href="/birds">Birds</a></li>
-          <li className={styles2.navItem}><a href="/contact">Contact</a></li>
-        </ul>
-      </nav>
+      <div className={styles2.navContainer}>
+        <nav className={styles2.navigation}>
+          <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
+          <ul className={styles.navList}>
+            <li className={styles2.navItem}><a href="/">Home</a></li>
+            <li className={styles2.navItem}><a href="/about">About</a></li>
+            <li className={styles2.navItem}><a href="/birds">Birds</a></li>
+            <li className={styles2.navItem}><a href="/dashboard">Insights</a></li>
+          </ul>
+        </nav>
+      </div>
 
       <div className={styles2.container}>
 
@@ -143,6 +145,9 @@ export default function Birds() {
           </div>
         )}
       </div>
+      <footer className={styles.footer}>
+        Red Nacional de Observadores de Aves, Naranjo Maury G (2022). DATAVES. Version 7.5. Red Nacional de Observadores de Aves - RNOA. Occurrence dataset. <a href="https://doi.org/10.15472/iqnpse" target="_blank" rel="noopener noreferrer">https://doi.org/10.15472/iqnpse</a>, accessed via GBIF.org on 2024-11-11.
+      </footer>
     </div>
   );
 }

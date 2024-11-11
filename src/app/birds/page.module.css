@@ -4,7 +4,11 @@
     align-items: center;
     background-color: #f5f5f5;
     color: #333;
-    padding: 20px;
+}
+
+.navContainer{
+  padding: 20px; 
+  background-color: #f5f5f5; 
 }
   
 .navigation {
@@ -323,5 +327,13 @@
   }
 }
 
-
-
+.footer {
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 20px 0;
+  border-top: 1px solid #ddd;
+  color: #666;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 20px;
+}

@@ -1,19 +1,23 @@
-'use client';
-import styles from "./page.module.css";
-import dynamic from "next/dynamic";
+'use client'
 import { useMemo, useState, useEffect, useRef } from "react";
-import styles2 from "./birds/page.module.css";
+import dynamic from "next/dynamic";
+import styles from "./page.module.css";
+import { useRouter } from 'next/navigation';
 
 const Map = dynamic(() => import("./components/Map"), {
   loading: () => <p>A map is loading...</p>,
-  ssr: false
+  ssr: false,
 });
 
+
 export default function Home() {
+  const router = useRouter();
   const [selectedBirds, setSelectedBirds] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const [birdsData, setBirdsData] = useState([]);
+  const [Latitude, setLatitude] = useState('');
+  const [Longitude, setLongitude] = useState('');
+  
   useEffect(() => {
     fetch('/birds_catalogue.json')
       .then(response => response.json())
@@ -27,24 +31,33 @@ export default function Home() {
       });
   }, []);
 
+  const birdRef = useRef(null);
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    if (selectedBirds.length > 0 && birdRef.current) {
+      birdRef.current.scrollIntoView();
+    }
+  }, [selectedBirds]);
+
   const handleMarkerClick = (markerData) => {
+
     const speciesSet = new Set();
+    const [Latitude, Longitude] = markerData.location.split(',').map(Number);
+    setLatitude(Latitude);
+    setLongitude(Longitude);
+
     markerData.species.forEach(species => {
-      console.log('species:', species);
       birdsData.forEach(bird => {
         if (bird.scientificName === species) {
           speciesSet.add(bird);
         }
       });
     });
-
-    console.log('Selected birds:', Array.from(speciesSet));
     setSelectedBirds(Array.from(speciesSet));
   };
 
   const MemoizedMap = useMemo(() => <Map onMarkerClick={handleMarkerClick} />, [birdsData]);
-
-  const mapRef = useRef(null);
 
   const scrollToMap = () => {
     if (mapRef.current) {
@@ -52,11 +65,22 @@ export default function Home() {
     }
   };
 
+  const redirectToBirds = () => {
+    console.log('Redirecting to birds page');
+    router.push('/birds');
+  };
+
+  const redirectToInsights = () => {
+    router.push('/dashboard');
+  }
+
+  const redirectToAbout = () => {
+    router.push('/about');
+  }
+
   return (
-    <div>
-      <div className={styles.container} style={{
-        backgroundImage: "url('/banner.jpg')",
-      }}>
+    <div style={{ backgroundColor: '#ffffff' }}>
+      <div className={styles.container} style={{ backgroundImage: "url('/banner.jpg')" }}>
         <nav className={styles.navigation}>
           <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
           <ul className={styles.navList}>
@@ -87,7 +111,6 @@ export default function Home() {
         </p>
 
         <div className={styles.wrapper}>
-          
           <div className={styles.mapinfo}> 
             <div className={styles.information}>
               <h3>Information</h3>
@@ -100,18 +123,14 @@ export default function Home() {
               <p>
                 Click on the insights button to see some interesting facts about the bird species in Colombia.
               </p>
-              <button type="submit" className={styles.button}>Insights</button>
+              <button type="submit" className={styles.button} onClick={redirectToInsights}>Insights</button>
             </div>
 
             <div className={styles.information}>
               <h3>Click on the Markers!</h3>
-              <p>
-              Click on the markers on the map for more information!
-              </p>
+              <p>Click on the markers on the map for more information!</p>
               <img src="/markers.png" alt="logo" style={{ width: '50px', cursor: 'pointer' }} />
-
             </div>
-
           </div>
 
           <div className={styles.mapContainer}>
@@ -121,45 +140,59 @@ export default function Home() {
       </div>
 
       {/* Bird Information Section */}
-      <div className={styles.birdInfoWrapper}>
+      <div className={styles.birdmapsection} ref={birdRef}>
         {selectedBirds.length > 0 && (
           <>
-            <div className={styles.additionalInfo}>
-              <h2>Explore the Birds of Colombia</h2>
-              <p>
-                Discover and visualize detailed records of bird observations across Colombia. This dataset includes <strong>413,272 sightings</strong> from <strong>1948 to 2011</strong>, documenting <strong>203 bird species</strong> from diverse regions, with detailed taxonomic and distribution data.
-              </p>
-              <h2>Want to know the Bird Catalogue?</h2>
-              <p>
-                Click on the Birds button to see the complete bird catalogue of Colombia.
-              </p>
-              <button type="submit" className={styles.button}>Birds</button>
-            </div>
+            <h2 className={styles.mapTitle}>Birds sighted at the Marker</h2>
+            <p className={styles.mapDescription}></p>
+            <div className={styles.birdInfoWrapper}>
+              <div className={styles.additionalInfo}>
+                <div className={styles.markersInfo}>
+                  <h2>Coordinates</h2>
+                  <p>Latitude: {Latitude}, Longitude: {Longitude}</p>
+                </div>
+                <div className={styles.markersInfo}>
+                  <h2>Want to know the Bird Catalogue?</h2>
+                  <p>Click on the Birds button to see the complete bird catalogue.</p>
+                  <button type="submit" className={styles.button} onClick={redirectToBirds}>Birds</button>
+                </div>
+                <div className={styles.markersInfo}>
+                  <h2>Know more about the project!</h2>
+                  <p>Click here and access more information</p>
+                  <button type="submit" className={styles.button} onClick={redirectToAbout}>About</button>
+                </div>
+              </div>
 
-            <div className={styles.birdInfoSection}>
-              {loading ? (
-                <p>Loading data, please wait...</p>
-              ) : selectedBirds.length > 0 ? (
-                <section className={styles.birdList}>
-                  {selectedBirds.map((bird) => (
-                    <div key={bird.scientificName} className={styles.birdCard}>
-                      <img src={bird.image_url} alt={bird.scientificName} className={styles.birdImage} />
-                      <h4>{bird.scientificName}</h4>
-                      <p><strong>Kingdom:</strong> {bird.kingdom}</p>
-                      <p><strong>Phylum:</strong> {bird.phylum}</p>
-                      <p><strong>Order:</strong> {bird.order}</p>
-                      <p><strong>Family:</strong> {bird.family}</p>
-                      <p><strong>Genus:</strong> {bird.genus}</p>
-                    </div>
-                  ))}
-                </section>
-              ) : (
-                <p>No birds selected. Click on a map marker to see bird details.</p>
-              )}
+              <div className={styles.birdInfoSection}>
+                {loading ? (
+                  <p>Loading data, please wait...</p>
+                ) : selectedBirds.length > 0 ? (
+                  <section className={styles.birdList}>
+                    {selectedBirds.map((bird) => (
+                      <div key={bird.scientificName} className={styles.birdCard}>
+                        <img src={bird.image_url} alt={bird.scientificName} className={styles.birdImage} />
+                        <h4>{bird.scientificName}</h4>
+                        <p><strong>Kingdom:</strong> {bird.kingdom}</p>
+                        <p><strong>Phylum:</strong> {bird.phylum}</p>
+                        <p><strong>Order:</strong> {bird.order}</p>
+                        <p><strong>Family:</strong> {bird.family}</p>
+                        <p><strong>Genus:</strong> {bird.genus}</p>
+                      </div>
+                    ))}
+                  </section>
+                ) : (
+                  <p>No birds selected. Click on a map marker to see bird details.</p>
+                )}
+              </div>
             </div>
           </>
         )}
       </div>
+
+      {/* Footer Section */}
+      <footer className={styles.footer}>
+        Red Nacional de Observadores de Aves, Naranjo Maury G (2022). DATAVES. Version 7.5. Red Nacional de Observadores de Aves - RNOA. Occurrence dataset. <a href="https://doi.org/10.15472/iqnpse" target="_blank" rel="noopener noreferrer">https://doi.org/10.15472/iqnpse</a>, accessed via GBIF.org on 2024-11-11.
+      </footer>
     </div>
   );
 }
