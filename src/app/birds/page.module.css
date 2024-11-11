@@ -38,7 +38,6 @@
   display: inline-block;
   margin-left: 30px; 
   font-size: 1rem; 
-  font-family: 'Open Sans', sans-serif; 
 }
 
 .navItem a {
@@ -95,7 +94,6 @@
   gap: 20px;
 }
 
-
 .filterPanel {
   flex: 1;
   background-color: #ffffff;
@@ -145,7 +143,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-  }
+}
 
 .birdCard {
   background-color: #ffffff;
@@ -184,7 +182,6 @@
   display: flex;
   align-items: center;
   font-size: 0.95rem;
-  font-family: 'Open Sans', sans-serif;
   color: #444;
   padding: 8px;
   border-radius: 5px;
@@ -302,7 +299,6 @@
 
 .description p {
   font-size: 1.2rem;
-  font-family: 'Open Sans', sans-serif; 
   color: #555; 
   margin-top: 15px;
   line-height: 1.7;

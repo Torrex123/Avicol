@@ -13,7 +13,6 @@ export default function Home() {
   const [selectedBirds, setSelectedBirds] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch all bird data
   const [birdsData, setBirdsData] = useState([]);
   useEffect(() => {
     fetch('/birds_catalogue.json')
@@ -122,25 +121,43 @@ export default function Home() {
       </div>
 
       {/* Bird Information Section */}
-      <div className={styles.birdInfoSection}>
-        {loading ? (
-          <p>Loading data, please wait...</p>
-        ) : selectedBirds.length > 0 ? (
-          <section className={styles2.birdList}>
-            {selectedBirds.map((bird) => (
-              <div key={bird.scientificName} className={styles2.birdCard}>
-                <img src={bird.image_url} alt={bird.scientificName} className={styles2.birdImage} />
-                <h4>{bird.scientificName}</h4>
-                <p><strong>Kingdom:</strong> {bird.kingdom}</p>
-                <p><strong>Phylum:</strong> {bird.phylum}</p>
-                <p><strong>Order:</strong> {bird.order}</p>
-                <p><strong>Family:</strong> {bird.family}</p>
-                <p><strong>Genus:</strong> {bird.genus}</p>
-              </div>
-            ))}
-          </section>
-        ) : (
-          <p>No birds selected. Click on a map marker to see bird details.</p>
+      <div className={styles.birdInfoWrapper}>
+        {selectedBirds.length > 0 && (
+          <>
+            <div className={styles.additionalInfo}>
+              <h2>Explore the Birds of Colombia</h2>
+              <p>
+                Discover and visualize detailed records of bird observations across Colombia. This dataset includes <strong>413,272 sightings</strong> from <strong>1948 to 2011</strong>, documenting <strong>203 bird species</strong> from diverse regions, with detailed taxonomic and distribution data.
+              </p>
+              <h2>Want to know the Bird Catalogue?</h2>
+              <p>
+                Click on the Birds button to see the complete bird catalogue of Colombia.
+              </p>
+              <button type="submit" className={styles.button}>Birds</button>
+            </div>
+
+            <div className={styles.birdInfoSection}>
+              {loading ? (
+                <p>Loading data, please wait...</p>
+              ) : selectedBirds.length > 0 ? (
+                <section className={styles.birdList}>
+                  {selectedBirds.map((bird) => (
+                    <div key={bird.scientificName} className={styles.birdCard}>
+                      <img src={bird.image_url} alt={bird.scientificName} className={styles.birdImage} />
+                      <h4>{bird.scientificName}</h4>
+                      <p><strong>Kingdom:</strong> {bird.kingdom}</p>
+                      <p><strong>Phylum:</strong> {bird.phylum}</p>
+                      <p><strong>Order:</strong> {bird.order}</p>
+                      <p><strong>Family:</strong> {bird.family}</p>
+                      <p><strong>Genus:</strong> {bird.genus}</p>
+                    </div>
+                  ))}
+                </section>
+              ) : (
+                <p>No birds selected. Click on a map marker to see bird details.</p>
+              )}
+            </div>
+          </>
         )}
       </div>
     </div>
