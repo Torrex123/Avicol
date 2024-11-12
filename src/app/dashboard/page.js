@@ -1,21 +1,16 @@
-'use client'
+'use client';
 import { useState, useEffect } from 'react';
+import { Line, Bar, Pie } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 import styles from "./../page.module.css";
 import styles2 from "./page.module.css";
-import Plot from 'react-plotly.js';
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, ArcElement);
 
 export default function Dashboard() {
-  const [taxonomicData, setTaxonomicData] = useState([]);
   const [yearlyObservations, setYearlyObservations] = useState([]);
   const [topLocations, setTopLocations] = useState([]);
   const [topBirds, setTopBirds] = useState([]);
-
-  useEffect(() => {
-    fetch('/taxonomic_data.json')
-      .then(response => response.json())
-      .then(data => setTaxonomicData(data))
-      .catch(error => console.error('Error fetching taxonomic data:', error));
-  }, []);
 
   useEffect(() => {
     fetch('/yearly_observations.json')
@@ -37,100 +32,93 @@ export default function Dashboard() {
       .then(data => setTopBirds(data))
       .catch(error => console.error('Error fetching top birds:', error));
   }, []);
-  
+
+  // Chart Data and Options
+  const yearlyObservationsData = {
+    labels: yearlyObservations.map(entry => entry.year),
+    datasets: [
+      {
+        label: 'Bird Observations per Year',
+        data: yearlyObservations.map(entry => entry.count),
+        fill: false,
+        borderColor: 'rgba(34, 139, 34, 0.6)',
+        backgroundColor: 'rgba(34, 139, 34, 0.4)',
+      },
+    ],
+  };
+
+  const topLocationsData = {
+    labels: topLocations.map(entry => entry.location),
+    datasets: [
+      {
+        label: 'Top Locations by Observation Count',
+        data: topLocations.map(entry => entry.count),
+        backgroundColor: 'rgba(60, 179, 113, 0.6)',
+      },
+    ],
+  };
+
+  const topBirdsData = {
+    labels: topBirds.map(entry => entry.scientificName),
+    datasets: [
+      {
+        label: 'Top 10 Birds Observed',
+        data: topBirds.map(entry => entry.count),
+        backgroundColor: [
+          '#228B22', '#32CD32', '#98FB98', '#00FA9A', '#00FF7F',
+          '#66CDAA', '#8FBC8F', '#2E8B57', '#3CB371', '#20B2AA'
+        ],
+      },
+    ],
+  };
+
   return (
-    <div>
-      {/* Navigation Bar */}
-      <nav className={styles2.navigation}>
-        <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
-        <ul className={styles.navList}>
-          <li className={styles2.navItem}><a href="/">Home</a></li>
-          <li className={styles2.navItem}><a href="/about">About</a></li>
-          <li className={styles2.navItem}><a href="/birds">Birds</a></li>
-          <li className={styles2.navItem}><a href="/contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div className={styles2.container}>
-        {/* Title Section for Insights */}
-        <div className={styles2.insightsTitleSection}>
-          <h1 className={styles2.title}>
-            <span>Explore</span> Valuable <span className={styles2.insights}>Insights</span> on <span className={styles2.birds}>Bird Populations</span>
-          </h1>
-          <p className={styles2.description}>
-            Dive into data-driven insights to understand bird distribution, habitat preferences, and seasonal sightings across Colombia.
-          </p>
+      <div>
+        {/* Navigation Bar */}
+        <div className={styles2.navContainer}>
+          <nav className={styles2.navigation}>
+            <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
+            <ul className={styles.navList}>
+              <li className={styles2.navItem}><a href="/">Home</a></li>
+              <li className={styles2.navItem}><a href="/about">About</a></li>
+              <li className={styles2.navItem}><a href="/birds">Birds</a></li>
+              <li className={styles2.navItem}><a href="/dashboard">Insights</a></li>
+            </ul>
+          </nav>
         </div>
-
-        {/* Plots Container */}
-        <div className={styles2.plotContainer}>
-          {/* Yearly Observations Line Chart */}
-          <div className={styles2.plot}>
-            <Plot
-              data={[{
-                x: yearlyObservations.map(d => d.year),
-                y: yearlyObservations.map(d => d.count),
-                type: 'scatter',
-                mode: 'lines+markers',
-                marker: { color: 'blue' },
-              }]}
-              layout={{ 
-                title: 'Bird Observations by Year', 
-                xaxis: { title: 'Year' }, 
-                yaxis: { title: 'Observation Count' },
-                width: 500, 
-                height: 400,
-                responsive: true
-              }}
-            />
-          </div>
-
-          {/* Top 10 Observation Locations Bar Chart */}
-          <div className={styles2.plot}>
-            <Plot
-              data={[{
-                x: topLocations.map(d => d.location),
-                y: topLocations.map(d => d.count),
-                type: 'bar',
-                marker: { color: 'green' },
-              }]}
-              layout={{ 
-                title: 'Top 10 Observation Locations', 
-                xaxis: { title: 'Location' }, 
-                yaxis: { title: 'Observation Count' },
-                width: 500, 
-                height: 400,
-                responsive: true
-              }}
-            />
-          </div>
-
-          {/* Top 10 Birds Bar Chart */}
-          <div className={styles2.plot}>
-            <Plot
-              data={[{
-                x: topBirds.map(d => d.scientificName),
-                y: topBirds.map(d => d.count),
-                type: 'bar',
-                marker: { color: 'purple' },
-              }]}
-              layout={{ 
-                title: 'Top 10 Most Observed Bird Species', 
-                xaxis: { title: 'Bird Species' }, 
-                yaxis: { title: 'Observation Count' },
-                width: 500, 
-                height: 400,
-                responsive: true
-              }}
-            />
-          </div>
-
-          {/* Taxonomy Sunburst Chart */}
-          <div className={styles2.plot}>
-            <h2> ERROR </h2>
+  
+        {/* Enhanced Title Section */}
+        <div className={styles2.container}>
+          <div className={styles2.insightsTitleSection}>
+            <h1 className={styles2.title}>Explore Vital Insights on Colombian Bird Populations</h1>
+            <p className={styles2.description}>
+              Discover a wealth of data on bird distribution across Colombia, compiled from over half a century of observations. Analyze key regions, species prevalence, and seasonal trends to understand bird population dynamics in diverse Colombian habitats.
+            </p>
           </div>
         </div>
+  
+        {/* Dashboard Layout */}
+        <div className={styles2.dashboardGrid}>
+          <div className={styles2.chartContainer}>
+            <h2>Bird Observations Over the Years</h2>
+            <Line data={yearlyObservationsData} options={{ responsive: true, maintainAspectRatio: false }} />
+          </div>
+          
+          <div className={styles2.chartContainer}>
+            <h2>Top Observation Locations</h2>
+            <Bar data={topLocationsData} options={{ responsive: true, maintainAspectRatio: false }} />
+          </div>
+  
+          <div className={styles2.chartContainer}>
+            <h2>Top 10 Birds Observed</h2>
+            <Pie data={topBirdsData} options={{ responsive: true, maintainAspectRatio: false }} />
+          </div>
+        </div>
+  
+        {/* Footer Section */}
+        <footer className={styles.footer}>
+          Red Nacional de Observadores de Aves, Naranjo Maury G (2022). DATAVES. Version 7.5. Red Nacional de Observadores de Aves - RNOA. Occurrence dataset. <a href="https://doi.org/10.15472/iqnpse" target="_blank" rel="noopener noreferrer">https://doi.org/10.15472/iqnpse</a>, accessed via GBIF.org on 2024-11-11.
+        </footer>
       </div>
-    </div>
   );
 }
