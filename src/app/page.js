@@ -66,7 +66,6 @@ export default function Home() {
   };
 
   const redirectToBirds = () => {
-    console.log('Redirecting to birds page');
     router.push('/birds');
   };
 

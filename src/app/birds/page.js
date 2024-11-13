@@ -64,7 +64,9 @@ export default function Birds() {
       {/* Navigation Bar */}
       <div className={styles2.navContainer}>
         <nav className={styles2.navigation}>
-          <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
+          <a href="/">
+                <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
+          </a>
           <ul className={styles.navList}>
             <li className={styles2.navItem}><a href="/">Home</a></li>
             <li className={styles2.navItem}><a href="/about">About</a></li>
