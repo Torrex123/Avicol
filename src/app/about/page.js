@@ -36,7 +36,7 @@ export default function About() {
         <div className={styles2.content}>
           <h2>Project Overview</h2>
           <p>
-          AVICOL is a project created for the course <strong> Aves del Caribe Colombiano </strong> , aimed at showcasing the distribution of Colombian bird species based on an extensive dataset of observations. 
+            AVICOL is a project created for the course <strong> Aves del Caribe Colombiano </strong>, aimed at showcasing the distribution of Colombian bird&apos;s species based on an extensive dataset of observations.
           </p>
         </div>
         <div className={styles2.imageContainer}>
