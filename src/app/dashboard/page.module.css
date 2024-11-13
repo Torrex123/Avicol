@@ -166,7 +166,7 @@
     transition: transform 0.2s ease;
 }
 
-.chartContainer:hover, .taxonomyChart:hover, .birdObservations:hover {
+.chartContainer:hover, .birdObservations:hover {
     transform: scale(1.05);
 }
 
