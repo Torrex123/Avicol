@@ -68,11 +68,19 @@ export default function Birds() {
           <Link href="/">
             <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
           </Link>
-          <ul className={styles.navList}>
-            <li className={styles2.navItem}><a href="/">Home</a></li>
-            <li className={styles2.navItem}><a href="/about">About</a></li>
-            <li className={styles2.navItem}><a href="/birds">Birds</a></li>
-            <li className={styles2.navItem}><a href="/dashboard">Insights</a></li>
+          <ul className={styles2.navList}>
+            <li className={styles2.navItem}>
+              <Link href="/">Home</Link>
+            </li>
+            <li className={styles2.navItem}>
+              <Link href="/about">About</Link>
+            </li>
+            <li className={styles2.navItem}>
+              <Link href="/birds">Birds</Link>
+            </li>
+            <li className={styles2.navItem}>
+              <Link href="/dashboard">Insights</Link>
+            </li>
           </ul>
         </nav>
       </div>
@@ -95,7 +103,7 @@ export default function Birds() {
               Collected by the Sociedad Antioqueña de Ornitología (SAO) and managed by the Red Nacional de Observadores de Aves (RNOA).
             </p>
             <p>
-              Hosted by the Sistema de Información sobre Biodiversidad de Colombia (SiB), with open access under a <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0 1.0 license</a>.
+              Hosted by the Sistema de Información sobre Biodiversidad de Colombia (SiB), with open access under a <Link href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0 1.0 license</Link>.
             </p>
             <small>Published: January 21, 2022 | Updated: June 22, 2023</small>
           </div>
@@ -149,7 +157,7 @@ export default function Birds() {
         )}
       </div>
       <footer className={styles.footer}>
-        Red Nacional de Observadores de Aves, Naranjo Maury G (2022). DATAVES. Version 7.5. Red Nacional de Observadores de Aves - RNOA. Occurrence dataset. <a href="https://doi.org/10.15472/iqnpse" target="_blank" rel="noopener noreferrer">https://doi.org/10.15472/iqnpse</a>, accessed via GBIF.org on 2024-11-11.
+        Red Nacional de Observadores de Aves, Naranjo Maury G (2022). DATAVES. Version 7.5. Red Nacional de Observadores de Aves - RNOA. Occurrence dataset. <Link href="https://doi.org/10.15472/iqnpse" target="_blank" rel="noopener noreferrer">https://doi.org/10.15472/iqnpse</Link>, accessed via GBIF.org on 2024-11-11.
       </footer>
     </div>
   );

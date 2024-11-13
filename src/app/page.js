@@ -3,6 +3,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import styles from "./page.module.css";
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const Map = dynamic(() => import("./components/Map"), {
   loading: () => <p>A map is loading...</p>,
@@ -83,10 +84,18 @@ export default function Home() {
         <nav className={styles.navigation}>
           <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
           <ul className={styles.navList}>
-            <li className={styles.navItem}><a href="/">Home</a></li>
-            <li className={styles.navItem}><a href="/about">About</a></li>
-            <li className={styles.navItem}><a href="/birds">Birds</a></li>
-            <li className={styles.navItem}><a href="/dashboard">Insights</a></li>
+            <li className={styles.navItem}>
+              <Link href="/">Home</Link>
+            </li>
+            <li className={styles.navItem}>
+              <Link href="/about">About</Link>
+            </li>
+            <li className={styles.navItem}>
+              <Link href="/birds">Birds</Link>
+            </li>
+            <li className={styles.navItem}>
+              <Link href="/dashboard">Insights</Link>
+            </li>
           </ul>
         </nav>
 
@@ -190,7 +199,7 @@ export default function Home() {
 
       {/* Footer Section */}
       <footer className={styles.footer}>
-        Red Nacional de Observadores de Aves, Naranjo Maury G (2022). DATAVES. Version 7.5. Red Nacional de Observadores de Aves - RNOA. Occurrence dataset. <a href="https://doi.org/10.15472/iqnpse" target="_blank" rel="noopener noreferrer">https://doi.org/10.15472/iqnpse</a>, accessed via GBIF.org on 2024-11-11.
+        Red Nacional de Observadores de Aves, Naranjo Maury G (2022). DATAVES. Version 7.5. Red Nacional de Observadores de Aves - RNOA. Occurrence dataset. <Link href="https://doi.org/10.15472/iqnpse" target="_blank" rel="noopener noreferrer">https://doi.org/10.15472/iqnpse</Link>, accessed via GBIF.org on 2024-11-11.
       </footer>
     </div>
   );

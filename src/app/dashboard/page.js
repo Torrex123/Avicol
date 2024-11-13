@@ -165,11 +165,19 @@ export default function Dashboard() {
             <Link href="/">
               <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
             </Link>
-            <ul className={styles.navList}>
-              <li className={styles2.navItem}><a href="/">Home</a></li>
-              <li className={styles2.navItem}><a href="/about">About</a></li>
-              <li className={styles2.navItem}><a href="/birds">Birds</a></li>
-              <li className={styles2.navItem}><a href="/dashboard">Insights</a></li>
+            <ul className={styles2.navList}>
+              <li className={styles2.navItem}>
+                <Link href="/">Home</Link>
+              </li>
+              <li className={styles2.navItem}>
+                <Link href="/about">About</Link>
+              </li>
+              <li className={styles2.navItem}>
+                <Link href="/birds">Birds</Link>
+              </li>
+              <li className={styles2.navItem}>
+                <Link href="/dashboard">Insights</Link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -231,7 +239,7 @@ export default function Dashboard() {
       </div>
 
       <footer className={styles.footer}>
-      Red Nacional de Observadores de Aves, Naranjo Maury G (2022). DATAVES. Version 7.5. Red Nacional de Observadores de Aves - RNOA. Occurrence dataset. <a href="https://doi.org/10.15472/iqnpse" target="_blank" rel="noopener noreferrer">https://doi.org/10.15472/iqnpse</a>, accessed via GBIF.org on 2024-11-11.
+        Red Nacional de Observadores de Aves, Naranjo Maury G (2022). DATAVES. Version 7.5. Red Nacional de Observadores de Aves - RNOA. Occurrence dataset. <Link href="https://doi.org/10.15472/iqnpse" target="_blank" rel="noopener noreferrer">https://doi.org/10.15472/iqnpse</Link>, accessed via GBIF.org on 2024-11-11.
       </footer>
     </div>
   );
