@@ -28,7 +28,7 @@ export default function About() {
       {/* Header with Background Image */}
       <header className={styles2.header}>
         <h1 className={styles2.title}>About AVICOL</h1>
-        <p className={styles2.subtitle}>Exploring the Rich Avian Diversity of Colombia's Territory</p>
+        <p className={styles2.subtitle}>Exploring the Rich Avian Diversity of Colombia&apos;s Territory</p>
       </header>
 
       {/* About Section */}
