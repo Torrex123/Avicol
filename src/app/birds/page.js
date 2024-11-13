@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import styles from './../page.module.css';
 import styles2 from './page.module.css';
+import Link from 'next/link';
 
 export default function Birds() {
   const [birdsData, setBirdsData] = useState([]);
@@ -64,9 +65,9 @@ export default function Birds() {
       {/* Navigation Bar */}
       <div className={styles2.navContainer}>
         <nav className={styles2.navigation}>
-          <a href="/">
-                <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
-          </a>
+          <Link href="/">
+            <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
+          </Link>
           <ul className={styles.navList}>
             <li className={styles2.navItem}><a href="/">Home</a></li>
             <li className={styles2.navItem}><a href="/about">About</a></li>

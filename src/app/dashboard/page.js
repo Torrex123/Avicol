@@ -4,6 +4,7 @@ import { Line, Bar, Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 import styles from "./../page.module.css";
 import styles2 from "./page.module.css";
+import Link from 'next/link';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, ArcElement);
 
@@ -161,9 +162,9 @@ export default function Dashboard() {
         {/* Navigation Bar */}
         <div>
           <nav className={styles2.navigation}>
-            <a href="/">
-                <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
-            </a>
+            <Link href="/">
+              <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
+            </Link>
             <ul className={styles.navList}>
               <li className={styles2.navItem}><a href="/">Home</a></li>
               <li className={styles2.navItem}><a href="/about">About</a></li>
