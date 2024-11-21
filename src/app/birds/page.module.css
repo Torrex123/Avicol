@@ -7,7 +7,6 @@
 }
 
 .navContainer{
-  padding: 20px; 
   background-color: #f5f5f5; 
 }
   
@@ -16,7 +15,7 @@
   display: flex;
   justify-content: space-between; 
   align-items: center; 
-  background-color: #1c9759; 
+  background-color: #729f19; 
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
   position: sticky; /* Keeps the navbar at the top when scrolling */
   padding: 10px 7%;
@@ -55,7 +54,7 @@
 
 .navItem a:hover {
   transform: scale(1.1); 
-  background-color: #4CAF50; 
+  background-color: #8ab434; 
   color: #ffffff; 
 }
 
@@ -166,13 +165,13 @@
 .birdImage {
   width: 100%;
   height: auto;
-  border-bottom: 2px solid #4CAF50;
+  border-bottom: 2px solid #729f19;
   margin-bottom: 10px;
 }
 
 .birdCard h4 {
   font-size: 1.1em;
-  color: #333;
+  color: #729f19;
   margin: 10px 0;
 }
 
@@ -289,7 +288,7 @@
 
 /* Styling for links */
 .infoColumn a {
-  color: #4CAF50;
+  color: #729f19;
   text-decoration: none;
 }
 
@@ -313,7 +312,7 @@
 }
 
 .dataset {
-  color: #2e8b57;
+  color: #729f19;
 }
 
 

@@ -340,20 +340,20 @@
 }
 
 .additionalInfo h2 {
-  color: #2d6a4f;
+  color: rgb(75, 75, 75);
   font-size: 1.8rem;
   font-weight: 700;
 }
 
 .additionalInfo p {
-  color: #3a5a40;
+  color: #6A6A6A;
   font-size: 1rem;
   line-height: 1.6;
 }
 
 .additionalInfo button {
   margin-top: 20px;
-  background-color: #5fa585;
+  background-color: #87A922;
   color: white;
   padding: 12px 24px;
   border: none;
@@ -364,7 +364,7 @@
 }
 
 .additionalInfo button:hover {
-  background-color: #4b876e;
+  background-color: #a3ca30;
 }
 
 .birdInfoSection {
@@ -402,17 +402,13 @@
 
 .birdCard h4 {
   font-size: 1.2rem;
-  color: #2d6a4f;
+  color: #87A922;
   margin-bottom: 10px;
 }
 
 .birdCard p {
   font-size: 1rem;
   color: #555;
-}
-
-.birdCard p strong {
-  color: #2d6a4f;
 }
 
 .markersInfo {

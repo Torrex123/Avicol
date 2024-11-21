@@ -85,7 +85,8 @@ export default function Dashboard() {
                     {
                         data: groupedData.data,
                         backgroundColor: [
-                          '#66BB6A', '#81C784', '#388E3C', '#4CAF50', '#2E7D32', '#A5D6A7', '#00796B'
+                          '#8ab434', '#8ab434', '#A1C639', '#B4C64D', '#4B8B27', 
+                          '#6A9C30', '#A9B33E',
                         ],
                         label: `Count of ${selectedLevel}`,
                     },
@@ -103,8 +104,8 @@ export default function Dashboard() {
         label: 'Bird Observations per Year',
         data: yearlyObservations.map(entry => entry.count),
         fill: false,
-        borderColor: 'rgba(34, 139, 34, 0.6)',
-        backgroundColor: 'rgba(34, 139, 34, 0.4)',
+        borderColor: '#729f19',
+        backgroundColor: '#9fcb48',
       },
     ],
   };
@@ -115,7 +116,7 @@ export default function Dashboard() {
       {
         label: 'Top Locations by Observation Count',
         data: topLocations.map(entry => entry.count),
-        backgroundColor: 'rgba(60, 179, 113, 0.6)',
+        backgroundColor: '#81b21e91',
       },
     ],
   };
@@ -124,12 +125,12 @@ export default function Dashboard() {
     labels: topBirds.map(entry => entry.scientificName), 
     datasets: [
       {
-        label: 'Top 10 Birds Observed',
+        label: 'Birds Observed',
         data: topBirds.map(entry => entry.count),
         backgroundColor: [
-          '#228B22', '#32CD32', '#98FB98', '#00FA9A', '#00FF7F',
-          '#66CDAA', '#8FBC8F', '#2E8B57', '#3CB371', '#20B2AA'
-        ],
+          '#7F9F2D', '#A1C639', '#B4C64D', '#4B8B27', '#9D8A28', 
+          '#D1C92D', '#B1D751', '#6A9C30', '#A9B33E', '#7BA32B'
+        ],        
       },
     ],
   };
@@ -140,7 +141,7 @@ export default function Dashboard() {
       {
         label: 'Top Dates by Observation Count',
         data: topDates.map(entry => entry.count),
-        backgroundColor: 'rgba(60, 179, 113, 0.6)',
+        backgroundColor: '#81b21e91',
       },
     ],
   };
@@ -151,7 +152,7 @@ export default function Dashboard() {
       {
         label: 'Top Departments by Observation Count',
         data: topDepartments.map(entry => entry.count),
-        backgroundColor: 'rgba(60, 179, 113, 0.6)',
+        backgroundColor: '#81b21e91',
       },
     ],
   };
@@ -163,7 +164,7 @@ export default function Dashboard() {
         <div>
           <nav className={styles2.navigation}>
             <Link href="/">
-              <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
+              <img src="/Avicol_white.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
             </Link>
             <ul className={styles2.navList}>
               <li className={styles2.navItem}>

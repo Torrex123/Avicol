@@ -7,7 +7,7 @@ export default function About() {
 
       <nav className={styles2.navigation}>
         <Link href="/">
-            <img src="/Avicol.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
+            <img src="/Avicol_white.png" alt="logo" style={{ width: '240px', cursor: 'pointer' }} />
         </Link>
         <ul className={styles2.navList}>
           <li className={styles2.navItem}>
