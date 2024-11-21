@@ -45,7 +45,7 @@
 }
 
 .title {
-  font-size: 70px;
+  font-size: 55px;
   font-weight: 600;
   line-height: 85px;
   margin-bottom: 25px;
@@ -64,7 +64,7 @@
 }
 
 .description {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: #e0e0e0;
   margin-bottom: 40px;
   line-height: 1.6;
@@ -197,6 +197,7 @@
 .information {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 100%;
   background-color: #ffffff;
@@ -239,22 +240,8 @@
   max-width: 90%;
 }
 
-@media (max-width: 1220px) {
 
-  .information h3 {
-    font-size: 1rem;
-  }
-
-  .information p {
-    font-size: 0.7rem;
-  }
-
-  .information button {
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 912px) {
   .wrapper {
     height: 130vh;
     flex-direction: column;
@@ -281,7 +268,7 @@
   }
 
   .information{
-    height: 60vh
+    height: 30vh
   }
 
   .information h3 {
@@ -329,7 +316,7 @@
 
 @media (max-width: 580px){
   .information{
-    height: 80vh
+    height: 50vh
   }
 }
 
