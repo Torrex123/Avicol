@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import styles from "./page.module.css";
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Map = dynamic(() => import("./components/Map"), {
   loading: () => <p>A map is loading...</p>,
@@ -115,7 +116,7 @@ export default function Home() {
       <div className={styles.mapSection} ref={mapRef}>
         <h2 className={styles.mapTitle}>Bird Distribution in Colombia</h2>
         <p className={styles.mapDescription}>
-          Explore the different bird species in Colombia and discover their habitats across the country.
+          Click the markers on the map to explore the different bird species found in Colombia!
         </p>
 
         <div className={styles.wrapper}>
@@ -134,11 +135,6 @@ export default function Home() {
               <button type="submit" className={styles.button} onClick={redirectToInsights}>Insights</button>
             </div>
 
-            <div className={styles.information}>
-              <h3>Click on the Markers!</h3>
-              <p>Click on the markers on the map for more information!</p>
-              <img src="/markers.png" alt="logo" style={{ width: '50px', cursor: 'pointer' }} />
-            </div>
           </div>
 
           <div className={styles.mapContainer}>
@@ -178,7 +174,7 @@ export default function Home() {
                   <section className={styles.birdList}>
                     {selectedBirds.map((bird) => (
                       <div key={bird.scientificName} className={styles.birdCard}>
-                        <img src={bird.image_url} alt={bird.scientificName} className={styles.birdImage} />
+                        <Image src={bird.image_url} alt={bird.scientificName} className={styles.birdImage} />
                         <h4>{bird.scientificName}</h4>
                         <p><strong>Kingdom:</strong> {bird.kingdom}</p>
                         <p><strong>Phylum:</strong> {bird.phylum}</p>

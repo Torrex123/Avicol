@@ -3,13 +3,11 @@
 .container {
   width: 100%;
   min-height: 100vh;
-  background-image: linear-gradient(
-      rgba(var(--gray-rgb), 0.05),
-      rgba(var(--gray-rgb), 0.05)
-    ), url('/bird.jpg'); 
+  background-image: linear-gradient(rgba(var(--gray-rgb), 0.05),
+      rgba(var(--gray-rgb), 0.05)), url('/bird.jpg');
   background-attachment: fixed;
-  background-size: cover; 
-  background-position: top center; 
+  background-size: cover;
+  background-position: top center;
   padding: 10px 7%;
 }
 
@@ -24,7 +22,7 @@
 .navList {
   list-style: none;
   width: 100%;
-  text-align: right; 
+  text-align: right;
   padding-right: 60px;
 
 }
@@ -34,7 +32,7 @@
   margin: 10px 20px;
 }
 
-.navItem a{
+.navItem a {
   text-decoration: none;
   font-size: larger;
   color: #f2f2f2
@@ -52,16 +50,16 @@
   line-height: 85px;
   margin-bottom: 25px;
   color: #ffffff;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); 
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
   animation: fadeInUp 1s ease-in-out;
 }
 
 .birds {
-  color: #87A922; 
+  color: #87A922;
 }
 
 .colombia {
-  color: #F09319; 
+  color: #F09319;
   text-transform: uppercase;
 }
 
@@ -89,18 +87,18 @@
   height: 50px;
   background-color: #87A922;
   color: #ffffff;
-  transition: background-color 0.3s ease, transform 0.2s ease; 
-  cursor: pointer; 
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
   animation: fadeInUp 1s ease-in-out;
 }
 
 .button:hover {
-  background-color: #a3ca30; 
-  transform: translateY(-2px); 
+  background-color: #a3ca30;
+  transform: translateY(-2px);
 }
 
 .button:active {
-  transform: translateY(0); 
+  transform: translateY(0);
 }
 
 .birdInfoSection {
@@ -117,6 +115,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -129,7 +128,8 @@
   width: 100%;
   margin: 0 auto;
   gap: 2rem;
-  background-color: #f8fff7;
+  height: 75vh;
+  /*background-color: #f8fff7;*/
 }
 
 .mapinfo {
@@ -145,49 +145,49 @@
   text-align: center;
 }
 
-.birdmapsection{
+.birdmapsection {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #f9fafc;
   text-align: center;
 }
+
 .mapTitle {
-  font-size: 3rem; 
-  font-weight: 700; 
-  color: #2d6a4f; 
-  text-align: center; 
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); 
-  border-bottom: 4px solid #465f45; 
+  font-size: 3rem;
+  font-weight: 700;
+  color: #87A922;
+  text-align: center;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  border-bottom: 4px solid #87A922;
 }
 
 .mapDescription {
-  color: #3a5a40; 
-  text-align: center; 
-  margin-top: 10px; 
-  line-height: 1.6; 
+  color: #6A6A6A;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1.6;
   padding: 0 20px;
-  max-width: 800px; 
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
 }
 
 .mapDescription a {
-  color: #5fa585; 
-  text-decoration: none; 
-  font-weight: 500; 
+  color: #5fa585;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .mapDescription a:hover {
-  text-decoration: underline; 
-  color: #2d6a4f; 
+  text-decoration: underline;
+  color: #2d6a4f;
 }
 
 .mapContainer {
   flex: 1;
   max-width: 65%;
-  max-height: 75vh;
   background-color: #e3fde3;
   border-radius: 12px;
   overflow: hidden;
@@ -195,18 +195,19 @@
 }
 
 .information {
-  flex: 1;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 60px;
 }
 
 .information h3 {
   font-size: 1.8em;
-  margin: 10px 0;
-  color: #2b7a3a; 
+  margin: 20px;
+  color: #87A922;
   font-weight: bold;
   position: relative;
 }
@@ -216,91 +217,119 @@
   display: block;
   width: 40px;
   height: 4px;
-  background-color: #4caf50;
+  background-color: #87A922;
   margin-top: 5px;
 }
 
 .information p {
-  font-size: 1.1em;
-  color: #4d6454;
+  font-size: 1em;
+  color: #6A6A6A;
   line-height: 1.6em;
   margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .information p span {
-  color: #2e8b57; 
+  color: #2e8b57;
   font-weight: bold;
 }
 
+.information button{
+  max-width: 90%;
+}
+
+@media (max-width: 1220px) {
+
+  .information h3 {
+    font-size: 1rem;
+  }
+
+  .information p {
+    font-size: 0.7rem;
+  }
+
+  .information button {
+    font-size: 0.8rem;
+  }
+}
 
 @media (max-width: 768px) {
   .wrapper {
+    height: 130vh;
     flex-direction: column;
-    padding: 1rem; 
-    gap: 1rem; 
+    padding: 1rem;
+    gap: 1rem;
   }
 
   .mapinfo {
-    max-width: 100%; 
+    max-width: 100%;
   }
 
   .mapContainer {
     max-width: 100%;
-    max-height: 60vh; 
+    max-height: 60vh;
   }
 
   .mapTitle {
-    font-size: 2.5rem; 
+    font-size: 2.5rem;
   }
 
   .mapDescription {
-    max-width: 100%; 
-    font-size: 1rem; 
+    max-width: 100%;
+    font-size: 1rem;
+  }
+
+  .information{
+    height: 60vh
   }
 
   .information h3 {
-    font-size: 1.5rem; 
+    font-size: 1.4rem;
   }
 
   .information p {
-    font-size: 1rem; 
+    font-size: 0.9rem;
+  }
+
+  .information button {
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
   .mapSection {
-    padding: 30px 10px; 
+    padding: 30px 10px;
   }
 
   .mapTitle {
-    font-size: 2rem; 
+    font-size: 2rem;
   }
 
   .mapDescription {
-    font-size: 0.95rem; 
-    padding: 0 10px; 
+    font-size: 0.95rem;
+    padding: 0 10px;
   }
 
   .wrapper {
     padding: 1rem;
-    gap: 1rem; 
+    gap: 1rem;
   }
 
   .mapinfo {
-    max-width: 100%; 
+    max-width: 100%;
   }
 
   .mapContainer {
-    max-width: 100%; 
-    max-height: 50vh; 
+    max-width: 100%;
+    max-height: 50vh;
   }
 
-  .information h3 {
-    font-size: 1.4rem; 
-  }
+}
 
-  .information p {
-    font-size: 0.9rem; 
+@media (max-width: 580px){
+  .information{
+    height: 80vh
   }
 }
 
@@ -308,9 +337,9 @@
   display: flex;
   gap: 30px;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.9); 
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: opacity 0.3s ease-in-out;
   width: 100%;
 }
@@ -337,7 +366,7 @@
 
 .additionalInfo button {
   margin-top: 20px;
-  background-color: #5fa585; 
+  background-color: #5fa585;
   color: white;
   padding: 12px 24px;
   border: none;
@@ -348,7 +377,7 @@
 }
 
 .additionalInfo button:hover {
-  background-color: #4b876e; 
+  background-color: #4b876e;
 }
 
 .birdInfoSection {
@@ -417,5 +446,3 @@
   text-align: center;
   margin-top: 20px;
 }
-
-/* test */
