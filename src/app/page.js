@@ -174,7 +174,7 @@ export default function Home() {
                   <section className={styles.birdList}>
                     {selectedBirds.map((bird) => (
                       <div key={bird.scientificName} className={styles.birdCard}>
-                        <Image src={bird.image_url} alt={bird.scientificName} className={styles.birdImage} />
+                        <img src={bird.image_url} alt={bird.scientificName} className={styles.birdImage} />
                         <h4>{bird.scientificName}</h4>
                         <p><strong>Kingdom:</strong> {bird.kingdom}</p>
                         <p><strong>Phylum:</strong> {bird.phylum}</p>
