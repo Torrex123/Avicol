@@ -10,14 +10,14 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarEleme
 
 function groupDataByLevel(data, level) {
   const grouped = data.reduce((acc, entry) => {
-      const key = entry[level] || 'Unknown';
-      acc[key] = (acc[key] || 0) + 1;
-      return acc;
+    const key = entry[level] || 'Unknown';
+    acc[key] = (acc[key] || 0) + 1;
+    return acc;
   }, {});
 
   return {
-      labels: Object.keys(grouped),
-      data: Object.values(grouped),
+    labels: Object.keys(grouped),
+    data: Object.values(grouped),
   };
 }
 
@@ -68,33 +68,33 @@ export default function Dashboard() {
   }, []);
 
   useEffect(() => {
-        async function fetchData() {
-            const res = await fetch('/taxonomy_data.json');
-            const data = await res.json();
-            setTaxonomyData(data);
-        }
-        fetchData();
-    }, []);
+    async function fetchData() {
+      const res = await fetch('/taxonomy_data.json');
+      const data = await res.json();
+      setTaxonomyData(data);
+    }
+    fetchData();
+  }, []);
 
-    useEffect(() => {
-        if (taxonomyData.length > 0) {
-            const groupedData = groupDataByLevel(taxonomyData, selectedLevel);
-            setChartData({
-                labels: groupedData.labels,
-                datasets: [
-                    {
-                        data: groupedData.data,
-                        backgroundColor: [
-                          '#8ab434', '#8ab434', '#A1C639', '#B4C64D', '#4B8B27', 
-                          '#6A9C30', '#A9B33E',
-                        ],
-                        label: `Count of ${selectedLevel}`,
-                    },
-                ],
-            });
-        }
-    }, [taxonomyData, selectedLevel]);
-  
+  useEffect(() => {
+    if (taxonomyData.length > 0) {
+      const groupedData = groupDataByLevel(taxonomyData, selectedLevel);
+      setChartData({
+        labels: groupedData.labels,
+        datasets: [
+          {
+            data: groupedData.data,
+            backgroundColor: [
+              '#8ab434', '#8ab434', '#A1C639', '#B4C64D', '#4B8B27',
+              '#6A9C30', '#A9B33E',
+            ],
+            label: `Count of ${selectedLevel}`,
+          },
+        ],
+      });
+    }
+  }, [taxonomyData, selectedLevel]);
+
 
   // Chart Data and Options
   const yearlyObservationsData = {
@@ -122,15 +122,15 @@ export default function Dashboard() {
   };
 
   const topBirdsData = {
-    labels: topBirds.map(entry => entry.scientificName), 
+    labels: topBirds.map(entry => entry.scientificName),
     datasets: [
       {
         label: 'Birds Observed',
         data: topBirds.map(entry => entry.count),
         backgroundColor: [
-          '#7F9F2D', '#A1C639', '#B4C64D', '#4B8B27', '#9D8A28', 
+          '#7F9F2D', '#A1C639', '#B4C64D', '#4B8B27', '#9D8A28',
           '#D1C92D', '#B1D751', '#6A9C30', '#A9B33E', '#7BA32B'
-        ],        
+        ],
       },
     ],
   };
@@ -158,7 +158,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div style={{backgroundColor: '#f5f5f5'}}>
+    <div style={{ backgroundColor: '#f5f5f5' }}>
       <div className={styles2.pagecontainer}>
         {/* Navigation Bar */}
         <div>
@@ -186,28 +186,28 @@ export default function Dashboard() {
         {/* Dashboard Layout */}
         <div className={styles2.insightscontainer}>
           <div className={styles2.taxonomyChart} >
-              <h1>Taxonomic Hierarchy of Bird Observations</h1>
-              
-              <label htmlFor="taxonomy-level">Select Taxonomic Level:</label>
-              <select
-                  id="taxonomy-level"
-                  value={selectedLevel}
-                  onChange={(e) => setSelectedLevel(e.target.value)}
-              >
-                  <option value="kingdom">Kingdom</option>
-                  <option value="phylum">Phylum</option>
-                  <option value="class">Class</option>
-                  <option value="order">Order</option>
-                  <option value="family">Family</option>
-                  <option value="genus">Genus</option>
-                  <option value="species">Species</option>
-              </select>
-              
-              {chartData ? (
-                  <Doughnut data={chartData} options={{ title: { display: true, text: `Distribution by ${selectedLevel}` } }} />
-              ) : (
-                  <p>Loading chart...</p>
-              )}
+            <h1>Taxonomic Hierarchy of Bird Observations</h1>
+
+            <label htmlFor="taxonomy-level">Select Taxonomic Level:</label>
+            <select
+              id="taxonomy-level"
+              value={selectedLevel}
+              onChange={(e) => setSelectedLevel(e.target.value)}
+            >
+              <option value="kingdom">Kingdom</option>
+              <option value="phylum">Phylum</option>
+              <option value="class">Class</option>
+              <option value="order">Order</option>
+              <option value="family">Family</option>
+              <option value="genus">Genus</option>
+              <option value="species">Species</option>
+            </select>
+
+            {chartData ? (
+              <Doughnut data={chartData} options={{ title: { display: true, text: `Distribution by ${selectedLevel}` } }} />
+            ) : (
+              <p>Loading chart...</p>
+            )}
           </div>
 
           <div className={styles2.dashboardGrid}>
@@ -215,26 +215,26 @@ export default function Dashboard() {
               <h2>Top Observation Locations</h2>
               <Bar data={topLocationsData} options={{ responsive: true, maintainAspectRatio: false }} />
             </div>
-    
+
             <div className={styles2.chartContainer}>
               <h2>Top 10 Birds Observed</h2>
-              <Bar  data={topBirdsData} options={{ responsive: true, maintainAspectRatio: false, indexAxis: 'y' }} />
+              <Bar data={topBirdsData} options={{ responsive: true, maintainAspectRatio: false, indexAxis: 'y' }} />
             </div>
 
             <div className={styles2.chartContainer}>
               <h2>Top 10 Departments with Most Observations</h2>
-              <Bar  data={topDepartmentsData} options={{ responsive: true, maintainAspectRatio: false }} />
+              <Bar data={topDepartmentsData} options={{ responsive: true, maintainAspectRatio: false }} />
             </div>
 
             <div className={styles2.chartContainer}>
               <h2>Top 10 Dates with Most Observations</h2>
-              <Bar  data={topDatesData} options={{ responsive: true, maintainAspectRatio: false }} />
+              <Bar data={topDatesData} options={{ responsive: true, maintainAspectRatio: false }} />
             </div>
           </div>
 
           <div className={styles2.birdObservations}>
-              <h2>Bird Observations Over the Years</h2>
-              <Line data={yearlyObservationsData} options={{ responsive: true, maintainAspectRatio: false }} />
+            <h2>Bird Observations Over the Years</h2>
+            <Line data={yearlyObservationsData} options={{ responsive: true, maintainAspectRatio: false }} />
           </div>
         </div>
       </div>

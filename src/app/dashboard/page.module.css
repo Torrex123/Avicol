@@ -138,6 +138,7 @@
 
 .dashboardGrid {
     display: grid;
+    align-items: center;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px; 
 }
@@ -153,8 +154,8 @@
 }
 
 .chartContainer {
-    width: 455px;
-    height: 400px;
+    width: 405px;
+    height: 350px;
     background-color: #ffffff;
     padding: 40px;
     border-radius: 10px;
@@ -199,6 +200,7 @@
 
 .taxonomyChart{
     background-color: #ffffff;
+    width: 30%;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -247,4 +249,21 @@
 
 .taxonomyChart select option:first-child {
     color: #999; 
+}
+
+@media (max-width: 1420px) {
+    .chartContainer {
+        width: 305px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 1080px) {
+    .taxonomyChart{
+        width: 60%;
+    }
+    .chartContainer {
+        width: 405px;
+        height: 350px;
+    }
 }
