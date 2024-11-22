@@ -320,6 +320,23 @@
   }
 }
 
+@media (max-width: 850px){
+  .birdInfoWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .additionalInfo {
+    width: 100%;
+    align-items: center;
+  }
+
+  .markersInfo{
+    width: 100%;
+  }
+}
+
 .birdInfoWrapper {
   display: flex;
   gap: 30px;
@@ -331,12 +348,17 @@
   width: 100%;
 }
 
+@media (min-width: 851px){
+  .additionalInfo{
+    max-width: 45vh;
+  }
+}
+
 .additionalInfo {
   display: flex;
   flex-direction: column;
   gap: 15px;
   width: 100%;
-  max-width: 45vh;
 }
 
 .additionalInfo h2 {

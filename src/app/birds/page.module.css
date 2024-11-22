@@ -229,7 +229,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 790px) {
   .mainContent {
     flex-direction: column;
   }
@@ -242,6 +242,13 @@
 .birdList {
     grid-template-columns: 1fr;
  }
+}
+
+@media (max-width: 720px){
+  .descriptionContainer {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .descriptionContainer {
